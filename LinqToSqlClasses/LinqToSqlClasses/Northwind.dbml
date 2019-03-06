@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Northwind2" Class="NorthwindDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Northwind2;Integrated Security=True" SettingsObjectName="LinqToSqlClasses.Properties.Settings" SettingsPropertyName="Northwind2ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Bolge" Member="Bolges">
+    <Type Name="Bolge">
+      <Column Name="BolgeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BolgeTanimi" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Bolge_Bolgeler" Member="Bolgelers" ThisKey="BolgeID" OtherKey="BolgeID" Type="Bolgeler" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Urunler" Member="Urunlers">
+    <Type Name="Urunler">
+      <Column Name="UrunID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UrunAdi" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="TedarikciID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KategoriID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BirimdekiMiktar" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BirimFiyati" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="HedefStokDuzeyi" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="YeniSatis" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="EnAzYenidenSatisMikatari" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Sonlandi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Urunler_Satis_Detaylari" Member="Satis_Detaylaris" ThisKey="UrunID" OtherKey="UrunID" Type="Satis_Detaylari" />
+      <Association Name="Kategoriler_Urunler" Member="Kategoriler" ThisKey="KategoriID" OtherKey="KategoriID" Type="Kategoriler" IsForeignKey="true" />
+      <Association Name="Tedarikciler_Urunler" Member="Tedarikciler" ThisKey="TedarikciID" OtherKey="TedarikciID" Type="Tedarikciler" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bolgeler" Member="Bolgelers">
+    <Type Name="Bolgeler">
+      <Column Name="TerritoryID" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TerritoryTanimi" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BolgeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Bolgeler_PersonelBolgeler" Member="PersonelBolgelers" ThisKey="TerritoryID" OtherKey="TerritoryID" Type="PersonelBolgeler" />
+      <Association Name="Bolge_Bolgeler" Member="Bolge" ThisKey="BolgeID" OtherKey="BolgeID" Type="Bolge" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Kategoriler" Member="Kategorilers">
+    <Type Name="Kategoriler">
+      <Column Name="KategoriID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="KategoriAdi" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Tanimi" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Resim" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Kategoriler_Urunler" Member="Urunlers" ThisKey="KategoriID" OtherKey="KategoriID" Type="Urunler" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MusteriDemographics" Member="MusteriDemographics">
+    <Type Name="MusteriDemographic">
+      <Column Name="MusteriTypeID" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MusteriDesc" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="MusteriDemographic_MusteriMusteriDemo" Member="MusteriMusteriDemos" ThisKey="MusteriTypeID" OtherKey="MusteriTypeID" Type="MusteriMusteriDemo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Musteriler" Member="Musterilers">
+    <Type Name="Musteriler">
+      <Column Name="MusteriID" Type="System.String" DbType="NChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SirketAdi" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="MusteriAdi" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="MusteriUnvani" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Adres" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="Sehir" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Bolge" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="PostaKodu" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Ulke" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Column Name="Faks" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Association Name="Musteriler_MusteriMusteriDemo" Member="MusteriMusteriDemos" ThisKey="MusteriID" OtherKey="MusteriID" Type="MusteriMusteriDemo" />
+      <Association Name="Musteriler_Satislar" Member="Satislars" ThisKey="MusteriID" OtherKey="MusteriID" Type="Satislar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MusteriMusteriDemo" Member="MusteriMusteriDemos">
+    <Type Name="MusteriMusteriDemo">
+      <Column Name="MusteriID" Type="System.String" DbType="NChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MusteriTypeID" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="MusteriDemographic_MusteriMusteriDemo" Member="MusteriDemographic" ThisKey="MusteriTypeID" OtherKey="MusteriTypeID" Type="MusteriDemographic" IsForeignKey="true" />
+      <Association Name="Musteriler_MusteriMusteriDemo" Member="Musteriler" ThisKey="MusteriID" OtherKey="MusteriID" Type="Musteriler" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nakliyeciler" Member="Nakliyecilers">
+    <Type Name="Nakliyeciler">
+      <Column Name="NakliyeciID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SirketAdi" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Association Name="Nakliyeciler_Satislar" Member="Satislars" ThisKey="NakliyeciID" OtherKey="ShipVia" Type="Satislar" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PersonelBolgeler" Member="PersonelBolgelers">
+    <Type Name="PersonelBolgeler">
+      <Column Name="PersonelID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TerritoryID" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Bolgeler_PersonelBolgeler" Member="Bolgeler" ThisKey="TerritoryID" OtherKey="TerritoryID" Type="Bolgeler" IsForeignKey="true" />
+      <Association Name="Personeller_PersonelBolgeler" Member="Personeller" ThisKey="PersonelID" OtherKey="PersonelID" Type="Personeller" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Personeller" Member="Personellers">
+    <Type Name="Personeller">
+      <Column Name="PersonelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SoyAdi" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Adi" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Unvan" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="UnvanEki" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="DogumTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IseBaslamaTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Adres" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="Sehir" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Bolge" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="PostaKodu" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Ulke" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="EvTelefonu" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Column Name="Extension" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Fotograf" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Notlar" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BagliCalistigiKisi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FotografPath" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Personeller_PersonelBolgeler" Member="PersonelBolgelers" ThisKey="PersonelID" OtherKey="PersonelID" Type="PersonelBolgeler" />
+      <Association Name="Personeller_Personeller" Member="Personellers" ThisKey="PersonelID" OtherKey="BagliCalistigiKisi" Type="Personeller" />
+      <Association Name="Personeller_Satislar" Member="Satislars" ThisKey="PersonelID" OtherKey="PersonelID" Type="Satislar" />
+      <Association Name="Personeller_Personeller" Member="Personeller1" ThisKey="BagliCalistigiKisi" OtherKey="PersonelID" Type="Personeller" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Satis Detaylari]" Member="Satis_Detaylaris">
+    <Type Name="Satis_Detaylari">
+      <Column Name="SatisID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UrunID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BirimFiyati" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Miktar" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="İndirim" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Association Name="Urunler_Satis_Detaylari" Member="Urunler" ThisKey="UrunID" OtherKey="UrunID" Type="Urunler" IsForeignKey="true" />
+      <Association Name="Satislar_Satis_Detaylari" Member="Satislar" ThisKey="SatisID" OtherKey="SatisID" Type="Satislar" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Satislar" Member="Satislars">
+    <Type Name="Satislar">
+      <Column Name="SatisID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MusteriID" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="PersonelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SatisTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OdemeTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SevkTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ShipVia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NakliyeUcreti" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SevkAdi" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="SevkAdresi" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="SevkSehri" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="SevkBolgesi" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="SevkPostaKodu" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="SevkUlkesi" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Association Name="Satislar_Satis_Detaylari" Member="Satis_Detaylaris" ThisKey="SatisID" OtherKey="SatisID" Type="Satis_Detaylari" />
+      <Association Name="Musteriler_Satislar" Member="Musteriler" ThisKey="MusteriID" OtherKey="MusteriID" Type="Musteriler" IsForeignKey="true" />
+      <Association Name="Nakliyeciler_Satislar" Member="Nakliyeciler" ThisKey="ShipVia" OtherKey="NakliyeciID" Type="Nakliyeciler" IsForeignKey="true" />
+      <Association Name="Personeller_Satislar" Member="Personeller" ThisKey="PersonelID" OtherKey="PersonelID" Type="Personeller" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tedarikciler" Member="Tedarikcilers">
+    <Type Name="Tedarikciler">
+      <Column Name="TedarikciID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SirketAdi" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="MusteriAdi" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="MusteriUnvani" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Adres" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="Sehir" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Bolge" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="PostaKodu" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Ulke" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Column Name="Faks" Type="System.String" DbType="NVarChar(24)" CanBeNull="true" />
+      <Column Name="WebSayfasi" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Tedarikciler_Urunler" Member="Urunlers" ThisKey="TedarikciID" OtherKey="TedarikciID" Type="Urunler" />
+    </Type>
+  </Table>
+</Database>

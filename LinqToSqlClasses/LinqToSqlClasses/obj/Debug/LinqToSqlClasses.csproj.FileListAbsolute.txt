@@ -1,0 +1,10 @@
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\bin\Debug\LinqToSqlClasses.exe.config
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\bin\Debug\LinqToSqlClasses.exe
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\bin\Debug\LinqToSqlClasses.pdb
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\obj\Debug\LinqToSqlClasses.csprojAssemblyReference.cache
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\obj\Debug\LinqToSqlClasses.Form1.resources
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\obj\Debug\LinqToSqlClasses.Properties.Resources.resources
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\obj\Debug\LinqToSqlClasses.csproj.GenerateResource.cache
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\obj\Debug\LinqToSqlClasses.csproj.CoreCompileInputs.cache
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\obj\Debug\LinqToSqlClasses.exe
+C:\Users\Tuncay\Google Drive\Suskunlar001\ENTITY\LinqToSqlClasses\LinqToSqlClasses\obj\Debug\LinqToSqlClasses.pdb
